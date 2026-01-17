@@ -1,0 +1,579 @@
+/* ========================================
+    ESTILOS DEL BOTÓN Y PANEL DE ACCESIBILIDAD
+    Solo lo necesario para el sistema de accesibilidad
+   ======================================== */
+
+/* Skip Link para WCAG 2.1 - Nivel A (2.4.1 Evitar bloques) */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 10000;
+    font-weight: bold;
+    border-radius: 0 0 4px 0;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid #4A90E2;
+    outline-offset: 2px;
+}
+
+/* Variables CSS opcionales (si no las tienes en tu proyecto) */
+:root {
+    --radius-m: 8px;
+}
+
+/* Botón flotante de accesibilidad (lado derecho) */
+.sidebar-tab {
+    position: fixed;
+    right: 0;
+    left: auto;
+    top: 5px;
+    background: #7a1637;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding: 10px 11px 10px 9px;
+    border-radius: var(--radius-m) 0 0 var(--radius-m);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+    z-index: 9999;
+    transition: background .3s, transform .3s, opacity .3s;
+    user-select: none;
+}
+
+.sidebar-tab .tab-icon { 
+    font-size: .85rem; 
+    transition: transform .3s; 
+    display: inline-block; 
+}
+
+/* Botón accesibilidad específico */
+#btn-accesibilidad.sidebar-tab.accesibilidad-tab { 
+    top: 15px;
+    padding: 5px 8px;
+    border-radius: var(--radius-m) 0 0 var(--radius-m);
+}
+
+#btn-accesibilidad.sidebar-tab.accesibilidad-tab .tab-icon { 
+    font-size: 1.1rem; 
+}
+
+/* Panel de accesibilidad (oculto por defecto) */
+#accesibilidad-panel { 
+    position: fixed; 
+    bottom: auto; 
+    right: 0; 
+    top: 130px; 
+    width: 250px; 
+    background: #ffffff; 
+    border: 1px solid #c7d3e0; 
+    padding: 14px 14px 16px; 
+    font-size: 1.05rem; 
+    box-shadow: 0 8px 24px -6px rgba(0,0,0,.35); 
+    border-radius: 14px; 
+    z-index: 9999; 
+    opacity: 0; 
+    pointer-events: none; 
+    transform: translateY(10px); 
+    transition: opacity .25s, transform .25s; 
+}
+
+#accesibilidad-panel.visible { 
+    opacity: 1; 
+    pointer-events: auto; 
+    transform: translateY(0); 
+}
+
+#accesibilidad-panel .cabecera { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    margin-bottom: 6px; 
+}
+
+#accesibilidad-panel h3 { 
+    font-size: 1.5rem; 
+    margin: 0; 
+    letter-spacing: .5px; 
+    font-weight: 600;
+}
+
+#accesibilidad-panel button, 
+#accesibilidad-panel select { 
+    width: 100%; 
+    margin: 5px 0; 
+    font-size: 1.2rem; 
+    padding: 10px 8px; 
+    background: #f5f7fa; 
+    border: 1px solid #c7d3e0; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    transition: .25s background, .25s color; 
+}
+
+#accesibilidad-panel button:hover, 
+#accesibilidad-panel select:hover { 
+    background: #e8edf2; 
+}
+
+#accesibilidad-panel .grp { 
+    display: flex; 
+    gap: 6px; 
+}
+
+#accesibilidad-panel .grp button { 
+    flex: 1; 
+}
+
+#accesibilidad-panel .cerrar { 
+    width: auto; 
+    flex: 0 0 auto; 
+    padding: 4px 8px; 
+    font-size: 1.2rem; 
+    line-height: 1; 
+    background: #e7ebef; 
+}
+
+#accesibilidad-panel .cerrar:hover { 
+    background: #d8dde2; 
+}
+
+#accesibilidad-panel label.lbl-select { 
+    display: block; 
+    font-size: .95rem; 
+    text-transform: uppercase; 
+    letter-spacing: .8px; 
+    font-weight: 600; 
+    margin: 6px 0 2px; 
+    color: #555; 
+}
+
+#accesibilidad-panel label.lbl-select select { 
+    margin-top: 4px; 
+}
+
+/* ========================================
+   MODO ALTO CONTRASTE (Mobirise)
+   ======================================== */
+html.modo-alto-contraste, 
+html.modo-alto-contraste body { 
+    background: #000 !important; 
+    color: #fff !important; 
+}
+
+/* Forzar fondo negro en todas las secciones y contenedores */
+html.modo-alto-contraste section,
+html.modo-alto-contraste .container,
+html.modo-alto-contraste .container-fluid,
+html.modo-alto-contraste .card,
+html.modo-alto-contraste .card-wrapper,
+html.modo-alto-contraste .content-wrapper,
+html.modo-alto-contraste .text-wrapper,
+html.modo-alto-contraste .row,
+html.modo-alto-contraste div { 
+    background: #000 !important; 
+    background-color: #000 !important; 
+}
+
+/* Eliminar overlays y fondos con transparencia */
+html.modo-alto-contraste .mbr-overlay {
+    background: #000 !important;
+    opacity: 1 !important;
+}
+
+/* Forzar gradientes a negro completo */
+html.modo-alto-contraste [style*="background-image: linear-gradient"] {
+    background-image: linear-gradient(-165deg, #000000, #000000 100%) !important;
+}
+
+html.modo-alto-contraste section[style*="background-image"],
+html.modo-alto-contraste div[style*="background-image"] {
+    background-image: none !important;
+    background: #000 !important;
+}
+
+html.modo-alto-contraste a { 
+    color: #7dd8ff !important; 
+}
+
+html.modo-alto-contraste h1, 
+html.modo-alto-contraste h2, 
+html.modo-alto-contraste h3, 
+html.modo-alto-contraste h4, 
+html.modo-alto-contraste h5, 
+html.modo-alto-contraste h6, 
+html.modo-alto-contraste p, 
+html.modo-alto-contraste li, 
+html.modo-alto-contraste label,
+html.modo-alto-contraste .mbr-text,
+html.modo-alto-contraste .mbr-section-title,
+html.modo-alto-contraste .mbr-label,
+html.modo-alto-contraste .item-text,
+html.modo-alto-contraste .mbr-fonts-style,
+html.modo-alto-contraste [class*="display-"],
+html.modo-alto-contraste strong,
+html.modo-alto-contraste em,
+html.modo-alto-contraste span { 
+    color: #ffffff !important; 
+}
+
+/* Botón en modo alto contraste */
+html.modo-alto-contraste #btn-accesibilidad { 
+    background: #0a84ff !important; 
+    color: #fff !important; 
+}
+
+html.modo-alto-contraste #btn-accesibilidad.sidebar-tab.accesibilidad-tab { 
+    background: #000000 !important; 
+}
+
+/* Panel en modo alto contraste */
+html.modo-alto-contraste #accesibilidad-panel { 
+    background: #000 !important; 
+    border-color: #444 !important; 
+}
+
+html.modo-alto-contraste #accesibilidad-panel > button, 
+html.modo-alto-contraste select { 
+    background: #222 !important; 
+    color: #fff !important; 
+    border-color: #555 !important; 
+}
+
+/* Botones en alto contraste */
+html.modo-alto-contraste button,
+html.modo-alto-contraste .btn,
+html.modo-alto-contraste .item-btn {
+    background: #1a1a1a !important;
+    color: #fff !important;
+    border: 1px solid #555 !important;
+}
+
+html.modo-alto-contraste button:hover,
+html.modo-alto-contraste .btn:hover {
+    background: #333 !important;
+}
+
+/* Tablas en alto contraste */
+html.modo-alto-contraste table { 
+    background: #111 !important; 
+    color: #fff !important; 
+    border-color: #444 !important; 
+}
+
+html.modo-alto-contraste table thead th { 
+    background: #222 !important; 
+    color: #fff !important; 
+    border-bottom: 1px solid #555 !important; 
+}
+
+html.modo-alto-contraste table tbody td { 
+    border-bottom: 1px solid #333 !important; 
+}
+
+html.modo-alto-contraste table tbody tr:nth-child(odd) { 
+    background: #181818 !important; 
+}
+
+html.modo-alto-contraste table tbody tr:hover { 
+    background: #222 !important; 
+}
+
+html.modo-alto-contraste table a { 
+    color: #7dd8ff !important; 
+}
+
+/* Imágenes en alto contraste */
+html.modo-alto-contraste img,
+html.modo-alto-contraste .image-wrapper { 
+    opacity: 0.8;
+    filter: grayscale(100%) contrast(1.2);
+}
+
+/* Iconos con background-image en alto contraste */
+html.modo-alto-contraste .cid-v5ARZVkpmP .items-wrapper .item .item-wrapper .item-content .icon-wrapper .mbr-iconfont {
+    background-image: none !important;
+    background: #000 !important;
+}
+
+/* ========================================
+   TIPOGRAFÍA EN MODO ACCESIBILIDAD (Mobirise)
+   ======================================== */
+html.accesibilidad-activa body,
+html.accesibilidad-activa p,
+html.accesibilidad-activa li,
+html.accesibilidad-activa .mbr-text,
+html.accesibilidad-activa .mbr-section-title,
+html.accesibilidad-activa .mbr-fonts-style,
+html.accesibilidad-activa .item-text,
+html.accesibilidad-activa .panel-text,
+html.accesibilidad-activa .mbr-label {
+    font-family: inherit !important;
+}
+
+/* ========================================
+   INDICADORES DE FOCO VISIBLES - WCAG 2.1 (2.4.7)
+   ======================================== */
+a:focus, 
+button:focus, 
+.btn:focus,
+[role="button"]:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 3px solid #4A90E2 !important;
+    outline-offset: 2px !important;
+}
+
+/* Asegurar que el foco sea visible en acordeones */
+.panel-title:focus,
+.panel-title-edit:focus {
+    outline: 3px solid #4A90E2 !important;
+    outline-offset: 2px !important;
+}
+
+/* ========================================
+   ALTO CONTRASTE - Logo W3C en gris
+   ======================================== */
+@media (prefers-contrast: high) {
+    .w3c-logo {
+        filter: grayscale(100%) contrast(1.5) !important;
+    }
+}
+
+html.accesibilidad-activa .w3c-logo {
+    filter: grayscale(100%) contrast(1.5) !important;
+}
+
+/* ========================================
+   RESPONSIVE (Móviles)
+   ======================================== */
+@media (max-width: 600px) {
+    #btn-accesibilidad { 
+        width: 48px; 
+        height: 48px; 
+        font-size: 1.1rem; 
+        bottom: 14px; 
+        right: 14px; 
+    }
+    
+    #accesibilidad-panel { 
+        width: 230px; 
+        bottom: 76px; 
+        right: 12px; 
+    }
+}
+
+/* ========================================
+    MEJORAS DE CONTRASTE - WCAG 2.1 Nivel AA (1.4.3)
+    Contraste mínimo 4.5:1 para texto normal
+    Contraste mínimo 3:1 para texto grande (18pt+ o 14pt+ bold)
+   ======================================== */
+
+/* Mejorar contraste de textos sobre fondos claros */
+.display-7 {
+    color: #333333 !important; /* Ratio 12.6:1 sobre blanco */
+}
+
+.mbr-text {
+    color: #333333 !important;
+}
+
+/* Enlaces con mejor contraste - Selectores ultra específicos para sobrescribir estilos de Mobirise */
+.text-primary,
+a.text-primary,
+a[class*="text-primary"],
+[class*="cid-"] .text-primary,
+[class*="cid-"] a.text-primary,
+section .text-primary,
+section a.text-primary,
+div .text-primary,
+p a.text-primary {
+    color: #98092b !important; /* Ratio 8.6:1 sobre blanco */
+}
+
+.text-primary:hover,
+a.text-primary:hover,
+a[class*="text-primary"]:hover,
+[class*="cid-"] .text-primary:hover,
+[class*="cid-"] a.text-primary:hover,
+section .text-primary:hover,
+section a.text-primary:hover,
+div .text-primary:hover,
+p a.text-primary:hover {
+    color: #6d061f !important; /* Tono más oscuro para hover */
+}
+
+/* Textos secundarios con contraste mejorado */
+.text-secondary {
+    color: #555555 !important; /* Ratio 9.7:1 */
+}
+
+/* ========================================
+    NAVEGACIÓN BREADCRUMB - WCAG 2.1 Nivel AA (2.4.8)
+    Proporciona ubicación dentro de la estructura del sitio
+   ======================================== */
+
+.breadcrumb-nav {
+    background-color: rgba(245, 245, 245, 0.8);
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.breadcrumb-nav ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.breadcrumb-nav li {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-nav li:not(:last-child)::after {
+    content: "›";
+    margin-left: 8px;
+    color: #666666;
+    font-weight: bold;
+}
+
+.breadcrumb-nav a {
+    color: #98092b;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb-nav a:hover {
+    color: #6d061f;
+    text-decoration: underline;
+}
+
+.breadcrumb-nav a:focus {
+    outline: 2px solid #4A90E2;
+    outline-offset: 2px;
+}
+
+.breadcrumb-nav .current {
+    color: #333333;
+    font-weight: 600;
+}
+
+/* ========================================
+    REGIÓN DE NAVEGACIÓN PRINCIPAL - WCAG AA (2.4.5)
+    Múltiples vías para encontrar contenido
+    OCULTA AUTOMÁTICAMENTE EN IFRAME
+   ======================================== */
+
+.main-navigation {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+/* Ocultar navegación y skip link cuando está en iframe */
+.in-iframe .main-navigation,
+.in-iframe .breadcrumb-nav,
+.in-iframe .skip-link {
+    display: none !important;
+}
+
+.main-navigation nav {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.main-navigation li {
+    margin: 0;
+}
+
+.main-navigation a {
+    color: #98092b;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.main-navigation a:hover {
+    background-color: #e9ecef;
+    color: #6d061f;
+}
+
+.main-navigation a:focus {
+    outline: 2px solid #4A90E2;
+    outline-offset: 2px;
+}
+
+.main-navigation a[aria-current="page"] {
+    background-color: #98092b;
+    color: #ffffff;
+}
+
+/* Responsive para navegación */
+@media (max-width: 768px) {
+    .main-navigation ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .breadcrumb-nav {
+        font-size: 0.85rem;
+    }
+}
+
+/* ========================================
+    MEJORAS ADICIONALES NIVEL AA
+   ======================================== */
+
+/* Asegurar contraste en botones */
+.btn-primary {
+    background-color: #98092b !important;
+    border-color: #98092b !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background-color: #6d061f !important;
+    border-color: #6d061f !important;
+}
+
+/* Contraste en elementos de formulario */
+input, textarea, select {
+    border: 2px solid #666666 !important;
+    color: #333333 !important;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #98092b !important;
+}
